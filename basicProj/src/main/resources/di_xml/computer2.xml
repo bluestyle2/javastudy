@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+>
+	<bean name="bb1" class="di_p.model.BoncheChild" p:cpu="i9" p:ram="32" p:hdd="2TB" />
+	<bean name="bb2" class="di_p.model.Bonche" p:cpu="i5" p:ram="16" p:hdd="1TB" />
+	
+	<bean name="mm1" class="di_p.model.Monitor" p:kind="FHD" p:size="27" />
+	<bean name="mm2" class="di_p.model.Monitor" p:kind="터치" p:size="20" />
+	
+	<bean name="kk" class="di_p.model.KeyBoard" p:type="기계식" p:price="30" />
+	<bean name="kk2" class="di_p.model.KeyBoardChild" p:type="펜타그래프" p:price="5" />
+	
+	<bean name="ms" class="di_p.model.MouseChild" p:type="게이밍" p:wireless="false" />
+	<bean name="ms2" class="di_p.model.Mouse" p:type="무성" p:wireless="true" />
+	<bean name="ms3" class="di_p.model.Mouse" p:type="인체공학" p:wireless="true" />
+	
+
+	
+
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.3.xsd"
+>
+	<aop:config>
+		<aop:aspect ref="adviceExecution">	<!-- //어느빈의것을 쓰겠다 -->
+			<aop:pointcut 
+			expression="execution(String *..*(..))" 
+			id="str"/>		
+			<aop:around method="retStr" pointcut-ref="str"/>			
+			<aop:around method="retBool" pointcut="execution(boolean *..*(..))"/>	<!-- 리턴에대한것 -->
+			
+			<aop:around method="argIntplus" pointcut="execution(* *.*(int,**))"/>
+			<aop:around method="argZero" pointcut="execution(* *.*())"/>			<!-- 매개변수에 대한것 -->			
+			
+			
+			<aop:around method="methStartM" pointcut="execution(* *.m*(..))"/>		<!-- 메소드명이 m으로 시작하는것들 -->
+			<aop:around method="classStartF" pointcut="execution(* *..F*.*(..))"/>	<!-- 클래스명이 F로 시작하는것들 -->
+			<aop:around method="pacStart_n" pointcut="execution(* *..n*.*.*(..))"/>	<!-- 패키지명이 n으로 시작하는것들 -->
+			
+			<aop:around method="methStudyp" pointcut="execution(* *.p*(..))"/>		<!-- 메소드명이 p으로 시작하는것들 -->
+			<aop:around method="methStudyt" pointcut="execution(* *.t*(..))"/>		<!-- 메소드명이 p으로 시작하는것들 -->
+		</aop:aspect>
+	
+	
+		
+	
+	</aop:config>
+	
+	<context:component-scan base-package="aop_p.model"/>
+	<context:annotation-config/>	
+</beans>

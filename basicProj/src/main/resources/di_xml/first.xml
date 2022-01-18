@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"	
+>
+
+	<bean id="mm2" class="di_p.model.Member">
+		<property name="name">
+			<value>중성민</value>
+		</property>
+		<property name="age" value="25"/>
+		<!--<property name="marriage" value="true"/>-->
+	</bean>
+
+	<!-- 같은 ID의 bean 설정 불가 -->
+	<!-- <bean id="mm2" class="di_p.model.Member">
+		<property name="name">
+			<value>상성민</value>
+		</property>
+		<property name="age" value="32"/>
+		<property name="marriage" value="true"/>
+	</bean> -->
+	
+	<bean id="mm3" class="di_p.model.Member" p:name="상성민" p:age="37"/>
+	
+	<bean id="st4" class="di_p.model.Stud" p:name="오병철" p:age="52" p:kind="특기생"/>
+	
+	<bean id="bb5" class="di_p.model.Baby" p:name="사병철" p:age="42" p:toy="아기상어"/>
+		
+	
+
+</beans>

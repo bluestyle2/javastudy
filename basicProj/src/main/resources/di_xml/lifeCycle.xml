@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+>
+	<bean class="di_p.model.MemeberDTO" name="dto"
+		p:pname="오병철" p:age = "23" p:sch-ref="green"	/>
+		
+	<bean class="di_p.model.School" name="green"
+		p:name="그린컴퓨터학원" p:addr = "요기" 	/>
+		
+	<bean class="di_p.model.Studs" name="red"
+		p:jum="72" p:grade="몰러"/>
+		<bean class="di_p.model.Studs" name="blue"
+		p:jum="62" p:grade="몰러"/>
+		
+	
+	<bean class="di_p.MyBeanFactoryPostProcessor"/>
+	<bean class="di_p.MyBeanPostProcessor"/>
+</beans>

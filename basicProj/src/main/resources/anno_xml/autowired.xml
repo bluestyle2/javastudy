@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+>
+	<bean name="mm" class="anno_p.model.Member"/>
+	
+	<bean class="java.lang.Integer">
+		<constructor-arg value="31"/>
+	</bean>
+	
+	<bean name="cc" class="anno_p.model.Coffee" p:name="카라멜마끼아또" p:price="5500" />
+	<bean name="cc1" class="anno_p.model.Coffee" p:name="카푸치노" p:price="6000" p:bb-ref="bb2"/>
+	<bean name="cc3" class="anno_p.model.Coffee" p:name="아메리카노" p:price="6000" p:bb-ref="bb3"/>
+	<bean name="cc4" class="anno_p.model.Coffee" p:name="카페모카" p:price="7000" p:bb-ref="bb4"/>
+	<bean name="cc5" class="anno_p.model.Coffee" p:name="마론라떼" p:price="8000" p:bb-ref="bb5"/>
+	
+	<bean class="java.lang.String">
+		<constructor-arg value="과테말라 엘 소코로"/>
+	</bean>
+	
+	<bean name="com" class="anno_p.model.Company" p:title="샘송" p:addr="대한민국" />
+	<bean name="cc2" class="anno_p.model.Company" p:title="아마존" p:addr="브라질 아마존" />
+	<bean name="bb" class="anno_p.model.Busoc" p:sirup="X" p:milk="X" p:choco="X" p:caramel="O"/>
+	<bean name="bb2" class="anno_p.model.Busoc" p:sirup="O" p:milk="O" p:choco="X" p:caramel="X"/>
+	<bean name="bb3" class="anno_p.model.Busoc" p:sirup="X" p:milk="X" p:choco="X" p:caramel="X"/>
+	<bean name="bb4" class="anno_p.model.Busoc" p:sirup="O" p:milk="O" p:choco="O" p:caramel="X"/>
+	<bean name="bb5" class="anno_p.model.Busoc" p:sirup="O" p:milk="O" p:choco="X" p:caramel="X" p:etc="밤시럽"/>
+	<context:annotation-config/>	
+</beans>

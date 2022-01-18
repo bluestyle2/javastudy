@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+>
+	<bean name="adult" class="di_p.model.Phone" p:name="어른폰"
+	p:fc-ref="fc" p:bc-ref="cam2" p:dd-ref="dd" />
+	
+	
+	<bean name="gal_1" class="di_p.model.Phone" p:name="은하수1" 
+	autowire="byName" />
+	
+	<bean name="gal_2" class="di_p.model.Phone" p:name="은하수2" 
+	autowire="byType"
+	p:fc-ref = "cam2" p:bc-ref = "cam1" p:dd-ref = "dis1"/>
+	
+	<bean name="dis1" class="di_p.model.Display" p:size="480" p:cnt="1" />
+	<bean name="dd" class="di_p.model.Display" p:size="540" p:cnt="2" />
+
+	<bean name="fc" class="di_p.model.Camera" p:type="일반" p:pixel="100" />
+	<bean name="cam2" class="di_p.model.Camera" p:type="광학" p:pixel="200" />
+	<bean name="cam1" class="di_p.model.Camera" p:type="수중" p:pixel="50" />
+	
+	<bean name="mem1" class="di_p.model.Member" autowire="byType" />
+	
+	<bean class="di_p.model.Company" p:name="나베르" p:addr="경기 분당 정자동" />
+	
+	<!-- <bean class="di_p.model.Company" p:name="구그레" p:addr="미쿡" />  같은 자료형의 bean이 두개라서 안됨 -->
+	
+	<bean name="nn" class="java.lang.String" >
+		<constructor-arg value="오병철"/>		
+	</bean>
+	
+	<bean name="ii" class="java.lang.Integer" >
+		<constructor-arg value="123456"/>		
+	</bean>
+	
+	<bean name="drink1" class="di_p.model.Drink" autowire="constructor" />
+													<!--  
+													<우선순위>
+													byName 으로 
+													byType 으로  
+													byType 을 배열형태로
+													
+													뭐에 걸릴지 몰라서 왠만하면 autowire="constructor"은 자주 사용하지 않는다.
+													-->
+													
+	<bean name="ach" class="di_p.model.Alcohol" p:name="보드카" p:proof="40" />
+	<bean name="ach2" class="di_p.model.Alcohol" p:name="처음처럼" p:proof="16" />
+	<bean name="aa" class="di_p.model.Alcohol" p:name="두꺼비" p:proof="18" />
+	
+	
+
+</beans>

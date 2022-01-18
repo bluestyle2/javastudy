@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"	
+>
+	
+
+	<bean name="mdb" class="di_p.model.Drink"
+	p:name="마티니" p:aa-ref="asrt" p:price="15000" />
+	
+	<bean name="cc1" class="di_p.model.Drink" >
+		<constructor-arg name="name" value="버블티"/> <!-- 생성자에 의해서 작동되고있음 -->
+	</bean>
+	
+	
+	
+	<bean name="cc2" class="di_p.model.Drink" >
+		<constructor-arg name="name" value="레몬소주"/> <!-- 생성자에 의해서 작동되고있음 -->
+		<constructor-arg name="aa" ref="red"/> <!-- 생성자는 ref -->
+		<constructor-arg name="price" value="5000"/>
+	</bean>
+	
+	<bean name="cc3" class="di_p.model.Drink" >
+		<constructor-arg name="name" value="쏘맥"/> <!-- 생성자에 의해서 작동되고있음 -->
+		<constructor-arg name="arr">
+		<list>
+			<ref bean="red"/>
+			<ref bean="tera"/>
+		</list> 
+		</constructor-arg>
+		<constructor-arg name="price" value="5000"/>
+	</bean>
+	
+	<bean name="cc4" class="di_p.model.Drink" >
+		<constructor-arg name="name" value="쏘맥카"/> <!-- 생성자에 의해서 작동되고있음 -->
+		<constructor-arg name="arr" ref="ach1"/>
+		<constructor-arg name="price" value="10000"/>		
+	</bean>
+	
+		<bean name="cc5" class="di_p.model.Drink" >
+		<constructor-arg name="name" value="후르츠"/> <!-- 생성자에 의해서 작동되고있음 -->		
+		<constructor-arg name="price" value="7000"/>
+		<constructor-arg name="ttt">
+			<array>
+				<value>사과</value>
+				<value>파인애플</value>
+				<value>살구</value>
+				<value>체리</value>	
+			</array>		
+			</constructor-arg>
+	</bean>
+	
+	<bean name="cc6" class="di_p.model.Drink" >
+		<constructor-arg name="name" value="탄산"/> <!-- 생성자에 의해서 작동되고있음 -->		
+		<constructor-arg name="price" value="9000"/>
+		<constructor-arg name="ttt" value="콜라,사이다,환타,미란다,써니텐" />	<!-- 배열을 콤마를 넣어서 써도됨 (기본자료형으로) -->	
+	</bean>
+	
+	<bean name="asrt" class="di_p.model.Alcohol" p:name="앱솔루트" p:proof="40"/>
+	<bean name="red" class="di_p.model.Alcohol" p:name="참이슬" p:proof="18"/>
+	<bean name="tera" class="di_p.model.Alcohol" p:name="테라" p:proof="10"/>
+	
+	
+	
+	<bean name="ach1" class="java.util.LinkedList" >
+		<constructor-arg>
+			<list>
+				<ref bean="red"/>
+				<ref bean="asrt"/>
+				<ref bean="tera"/>
+			</list> 
+		</constructor-arg>
+	</bean>
+	
+	<bean name="circle" class="di_p.model.Shape" > 		
+		<constructor-arg name="w" value="3"/>
+	</bean>
+	<bean name="react" class="di_p.model.Shape" > 		
+		<constructor-arg name="w" value="4"/>
+		<constructor-arg name="s" value="3"/>
+	</bean>
+	
+	<bean name="trang" class="di_p.model.Shape" > 		
+		<constructor-arg name="w" value="4"/>
+		<constructor-arg name="s" value="3"/>
+		<constructor-arg name="h" value="2"/>
+	</bean>
+	
+	
+</beans>

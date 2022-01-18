@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"	
+>
+
+	<bean name="st1" class="di_p.model.Stud" p:name="오병철" >
+		<property name ="jum">
+			<array> <!-- 배열은 <array>가 들어간다 -->
+				<value>78</value>
+				<value>72</value>
+				<value>73</value>
+			</array>
+		</property>
+	</bean>
+
+	<bean name="st2" class="di_p.model.Stud" p:name="칠병철" >
+		<property name ="jum2">
+			<list>
+				<value>68</value>
+				<value>62</value>
+				<value>63</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="st3" class="di_p.model.Stud" p:name="팔병철" >
+		<property name ="jum3">
+			<set>
+				<value>98</value>
+				<value>92</value>
+				<value>93</value>
+			</set>
+		</property>
+	</bean>
+
+	<bean name="st4" class="di_p.model.Stud" p:name="구병철" >
+		<property name ="jum4">
+			<map>
+				<entry>
+				<key><value>국어</value></key>
+				<value>87</value>
+				</entry>
+				<entry>
+				<key><value>영어</value></key>
+				<value>81</value>
+				</entry>
+				<entry>
+				<key><value>수학</value></key>
+				<value>85</value>
+				</entry>
+				
+			</map>
+		</property>
+	</bean>
+
+	<bean name="ph1" class="di_p.model.Phone" p:name="은하수" 
+	p:fc-ref="cam1" p:bc-ref="cam2" p:dd-ref="dis3">
+		<property name="games">
+			<list>
+				<ref bean="gg1"/>
+				<ref bean="gg2"/>
+				<ref bean="gg3"/>
+				<ref bean="gg4"/>
+				<ref bean="gg5"/>
+			</list>
+		</property>
+
+	</bean>
+	<bean name="dis3" class="di_p.model.Display" p:size="720" p:cnt="1"/>
+	<bean name="dis4" class="di_p.model.Display" p:size="480" p:cnt="2"/>
+	<bean name="cam1" class="di_p.model.Camera" p:type="일반" p:pixel="100"/>
+	<bean name="cam2" class="di_p.model.Camera" p:type="광학" p:pixel="200"/>
+
+	<bean name="gg1" class="di_p.model.Game" p:name="테트리스" p:age="0"/>
+	<bean name="gg2" class="di_p.model.Game" p:name="포트리스" p:age="12"/>
+	<bean name="gg3" class="di_p.model.Game" p:name="매트리스" p:age="15"/>
+	<bean name="gg4" class="di_p.model.Game" p:name="자동차리스" p:age="20"/>
+	<bean name="gg5" class="di_p.model.Game" p:name="홈리스" p:age="48"/>
+	
+	<bean name="ban" class="di_p.model.StudBan" p:ban="1" >
+		<property name="studs">
+			<list>
+				<ref bean="st1"/>
+				<ref bean="st2"/>
+				<ref bean="st3"/>
+				<ref bean="st4"/>
+			</list>
+		</property>
+	
+	</bean>
+</beans>
