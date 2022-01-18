@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car</title>
+    <style>
+        #wrapper{
+            width:900px;
+            height: 600px;
+            background-image: url(../fff/car.jpg);
+            margin: auto;
+        } 
+        #wrapper > div{
+            width:100px;
+            height: 100px;
+            background-color: #333;
+            float: left;
+            border: 1px solid #888;
+            box-sizing: border-box;
+            color:#fff;
+        }
+
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            for (let i = 0; i < 54; i++) {
+                $("#wrapper").append($("<div>"))    
+            }
+
+            $("#wrapper > div").on("mouseover",function(e){
+                console.log(e.pageX+","+e.pageY)
+                
+                $(this).css({opacity:0})
+            })
+            $("#wrapper > div").on("mouseout",function(){
+                $(this).css({opacity:0.5})
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+    <h1>car</h1>
+    <div id="wrapper"></div>
+</body>
+</html>

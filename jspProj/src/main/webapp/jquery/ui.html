@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ui</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            position: relative;
+            left : 50px;
+            background: #f00;
+            margin: 20px;
+        }
+        .box3{
+            float: left;
+        }
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script src="../qqq/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $("#easingGo").click(function(){
+                console.log($(this).html())
+
+                //$(this)  --> $("#easingGo")
+                if($(this).html()=="-&gt;"){
+                    $(this).html("<-")
+                    var poX = 400
+                }else{
+                    $(this).html("->")
+                    var poX = 50
+                }
+
+
+                $(".box1").each(function(i,e){
+
+                     //$(this)  -->  $(".box1").eq(i)
+                     console.log( $(this).attr("ee") )
+                    $(this).animate(
+                        {left:poX+"px"},
+                        1000,
+                        $(this).attr("ee")
+                    )
+                }) 
+
+                $(".box2").animate(
+                        {left:poX+"px"},
+                        1000
+                )
+
+            })
+
+
+
+            $("#colorGo").click(function(){
+
+                $(".box3").each(function(i,e){
+
+                    $(this).animate(
+                        {backgroundColor: $(this).attr("ee") },
+                        1000,
+                        "easeOutBounce"
+                    )
+                }) 
+
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>easing</h1>
+    <button id="easingGo">-></button>
+    <div class="box1" ee="linear">linear</div>
+    <div class="box2"></div>
+    <div class="box1" ee="swing">swing</div>
+    <div class="box1" ee="easeOutBounce">easeOutBounce</div>
+    <h1>color</h1>
+    <button id="colorGo">color</button>
+    <div class="box3" ee="#ff0">#ff0</div>
+    <div class="box3" ee="#0f0">#0f0</div>
+    <div class="box3" ee="rgba(0,055,0,0.5)">0.5</div>
+</body>
+</html>

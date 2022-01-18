@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+    <style>
+    .vv{
+        /* 
+        width: 400px;   
+        height: 300px; 
+        */
+
+        width: 400px;   
+        height: 100%; 
+        
+    }
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            var vvv = document.getElementById("vvv")
+            //vvv.play()
+            //console.log(vvv.duration,  vvv.currentTime)
+            //console.log(vvv.paused)
+
+            $("#go").click(function(){
+                if(vvv.paused){
+                    vvv.play()
+                    $(this).html("||")
+                }else{    
+                    vvv.pause()
+                    $(this).html("▶")
+                }
+                
+            })
+
+            $(".ct").click(function(){
+                var time = $(this).html()
+                console.log(time)
+                vvv.currentTime = time
+                
+            })
+           
+
+            $(".rt").click(function(){
+                vvv.playbackRate = $(this).html()
+            })
+
+            $(".vol").click(function(){
+                vvv.muted = false //음소거를 하지 않는다.
+                vvv.volume = $(this).html()
+            })
+        })
+        
+    </script>
+</head>
+<body>
+    <h1>video</h1>
+
+    <video id = "vvv" class="vv" src="../fff/zxcv.mp4" muted controls ></video><br>
+    <button id="go">▶</button>
+    <br>위치<br>    
+    <button class="ct">0</button>
+    <button class="ct">5</button>
+    <button class="ct">9</button>
+    <br>속도<br>    
+    <button class="rt">0.5</button>
+    <button class="rt">1</button>
+    <button class="rt">2</button>
+    <br>소리<br>    
+    <button class="vol">0</button>
+    <button class="vol">0.3</button>
+    <button class="vol">0.6</button>
+    <button class="vol">1</button>
+</body>
+</html>

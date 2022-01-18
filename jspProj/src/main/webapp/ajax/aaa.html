@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>aaa</title>
+<style>
+		#con{
+		width:500px;
+		height:500px;
+		background: #ff0;
+		border: 1px solid #000;
+		padding: 50px;
+		margin: 50px;
+		}
+		
+</style>
+<script type="text/javascript" src="../qqq/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("button").click(function(){
+			
+			var ttt = $(this).html()
+			alert(ttt)
+			
+			$.ajax({
+				url:"data.jsp",
+				data:{kind:ttt},
+				type:'post',
+				success:function(ddd){	//성공을하면
+					$("#con").html(ddd)	//#con에 내용을 뿌린다
+				},
+				error:function(e){
+					alert(e.responseText)
+				}
+			})
+			
+		})
+		
+	})
+</script>
+</head>
+<body>
+<h1>aaa</h1>
+<button>sports</button>
+<button>eco</button>
+<button>enter</button>
+
+<div id="con"></div>
+</body>
+</html>

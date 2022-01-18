@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domEvent</title>
+    <style>
+       
+        div{
+            width:170px;
+            height: 170px;
+            position: absolute;
+            left:100px;
+            top:200px;
+            background-image: url(../fff/post.png);
+        }
+        div > textarea{
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            border: none;
+            background: none;
+        }
+        #trash{
+            width:120px;
+            height: 130px;
+            position: absolute;
+            left:600px;
+            top:500px;
+            background-image: url(../fff/trash_can2.png);
+            background-size: 120px 130px;
+        }
+
+    </style>
+     <script src="../qqq/jquery-3.6.0.js"></script>
+     <script src="../qqq/jquery-ui.js"></script>
+     <script>
+         $(function(){
+
+            var trash_w = eval($("#trash").css("width").substr(0,$("#trash").css("width").lastIndexOf("px")))
+            var trash_x = $("#trash").offset().left
+            var trash_h = eval($("#trash").css("height").substr(0,$("#trash").css("height").lastIndexOf("px")))
+            var trash_y = $("#trash").offset().top
+            
+
+            $("#btn").click(function(){
+                var box = $("<div>")
+                var newIn = $("<textarea>")
+                newIn.html( $("#ttt").val() ) 
+                $("#ttt").val("")
+
+                box.append(newIn)
+                $("body").append(box)
+
+
+
+                box.draggable()
+ 
+                box.bind("dragstart", function(e){
+                    $(this).css({backgroundImage:"url(../fff/post2.png)"})
+                    
+
+                }).bind("dragstop", function(){
+                    $(this).css({backgroundImage:"url(../fff/post.png)"})
+
+                    var this_w = eval($(this).css("width").substr(0,$(this).css("width").lastIndexOf("px")))
+                    var this_x = $(this).offset().left
+                    var this_h = eval($(this).css("height").substr(0,$(this).css("height").lastIndexOf("px")))
+                    var this_y = $(this).offset().top
+
+                    if( this_x < trash_x+trash_w && this_x+this_w > trash_x  //x축
+                        &&
+                        this_y < trash_y+trash_h && this_y+this_h > trash_y  //y축
+                    ){
+                        //console.log("겹쳐졌다")
+                        $(this).remove()
+                    }
+
+                   
+
+                })
+            })
+
+            //console.log($("#trash").css("left")+$("#trash").css("width"), $("#trash").css("top") )
+            //console.log(eval("123px".substr(0,"123px".lastIndexOf("px"))) +100 )
+            
+            //console.log($("#trash").offset().left+ww, $("#trash").css("top") )
+         })
+     </script>
+    
+</head>
+<body>
+    <h1>domEvent</h1>
+    
+    <input type="text" id="ttt">
+    <input type="button" id="btn" value="추가">
+
+    <div id="trash"></div>
+   
+</body>
+</html>

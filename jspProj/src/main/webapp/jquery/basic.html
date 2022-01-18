@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic</title>
+    <!-- <link href="../qqq/bbb.css" rel="stylesheet"> -->
+
+    <script src="../qqq/jquery-3.6.0.js"></script>
+
+    <script>
+        // window.onload = function(){
+        //     var hhh = document.getElementsByTagName("header")[0]
+        //     hhh.style.background = "#ff0"
+        // }
+
+        $(function(){
+
+            //$("header").css("background",  "#ff0")
+
+            $("header").css({
+                    background : "#ff0",
+                    height : "100px",
+                    "font-size" : "3rem",
+                    padding :"30px",
+                    lineHeight : "100px"
+            
+            })
+
+            $("section > #box").css({
+                fontSize: "40px",
+                fontStyle: "italic",
+                transform: "rotate(10deg)"
+            })
+
+
+        })
+
+    </script>
+    
+</head>
+<body>
+    <h1>basic</h1>
+
+    <header>와 헤더다</header>
+    <section>
+        <div id="box">와 내용이다</div>
+    </section>
+    <footer>
+        와 바닥이다 
+        <h1>바닥의 h1 이다</h1>
+    </footer>
+
+</body>
+</html>

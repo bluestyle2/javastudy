@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keyevent</title>
+    <style>
+       
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script> 
+    <script>
+        $(function(){
+
+            $("input").keydown(function(e){
+                console.log("keydown : ", e.keyCode)
+            }).keyup(function(e){
+                console.log("keyup : ", e.keyCode)
+            }).focus(function(e){
+                $(this).css({backgroundColor:"#ff0"})
+            }).blur(function(e){
+                $(this).css({backgroundColor:"#f0f"})
+            })
+           
+            
+        })
+    </script>
+</head>
+<body>
+    <h1>keyevent</h1>
+    <input type="text"><br>
+    <input type="text"><br>
+    <input type="text"><br>
+</body>
+</html>

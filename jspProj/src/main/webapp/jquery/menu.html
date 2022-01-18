@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piano</title>
+    <style>
+        
+        #wrapper > ul {
+            margin: 0px;
+            padding:0px;
+            width: 200px;
+            height: 100px;
+            float: left;
+            overflow: hidden;
+        }
+        #wrapper > ul > li{
+            margin: 2rem;
+            list-style: none;
+            line-height: 50px;
+            width: 200px;
+            height: 50px;
+        }
+        #wrapper > ul > li:first-of-type{
+            font-size: 2rem;
+            margin: 0px;
+            text-align: center;
+            line-height: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            var arr = ["red","orange", "yellow","green" ]
+
+            $.each(arr, function(i, e){
+                
+                $("#wrapper > ul").eq(i).css({backgroundColor:e})
+
+            })
+
+            $("#wrapper > ul").hover(
+                function(){
+                    //console.log("마우스 올렸다")
+                    $(this).stop().animate({height:500}, 500)
+                },
+                function(){
+                    //console.log("마우스 나갔다")
+                    $(this).stop().animate({height:100}, 500)
+                }
+            )
+
+        })
+    </script>
+</head>
+<body>
+    <h1>piano</h1>
+    <div id="wrapper">
+        <ul>
+            <li>회사소개</li>
+            <li>인사말</li>
+            <li>인사개</li>
+            <li>인사소</li>
+        </ul>
+        <ul>
+            <li>제품</li>
+            <li>그놈품</li>
+            <li>저놈품</li>
+        </ul>
+        <ul>
+            <li>갤러리</li>
+            <li>봄</li>
+            <li>여름</li>
+            <li>가을</li>
+            <li>겨울</li>
+        </ul>
+        <ul>
+            <li>고객센터</li>
+            <li>고객라이트</li>
+            <li>고객레프트</li>
+        </ul>
+    </div>
+</body>
+</html>

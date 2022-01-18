@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append</title>
+    <style>
+        #con{
+            background: #0ff;
+        }
+        span{
+            display: block;
+            background: #ff0;
+            height: 50px;
+            width: 300px;
+            border:1px solid #000;
+        }
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("#con").append("아부라카타부라")
+            $("#con").append("<span>append</span>")
+            var pp = $("<span>prepend</span>")
+            var box1 = $("<span>box1</span>")
+            var box2 = $("<span>box2</span>")
+            $("#con").append(box1)
+            $("#con").append(box2)
+            $("#con").prepend(pp)
+            $("<span>appendTo</span>").appendTo("#con")
+            $("<span>prependTo</span>").prependTo("#con")
+
+            $("#con").after("<span id='af'>after</span>")
+            $("#con").before("<span>before</span>")
+            $("<span>insertAfter</span>").insertAfter("#con")
+            $("<span>insertBefore</span>").insertBefore("#con")
+
+
+            pp.remove()
+            $("#af").remove()
+
+            $("#con").append(box1)  //기존에 추가된 요소를 다시 추가할 경우 기존의 요소에서 자리 바꿈으로 처리
+
+            //box2.clone() 복제하여 새 요소 생성
+            $("#con").append(box2.clone() )
+        })
+    </script>
+</head>
+<body>
+    <h1>append</h1>
+    <div id="con"></div>
+</body>
+</html>

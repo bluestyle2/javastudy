@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #wrapper{
+            width:900px;
+            height: 500px;
+            margin: auto;
+            border: 1px solid #ccc;
+        }
+        #wrapper >div{
+            width:160px;
+            height: 180px;
+            border: 1px solid #000;
+            float: left;
+            margin: 10px;
+        }
+
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+
+            for (let i = 1; i <= 8; i++) {
+                var box = $("<div></div>")
+                var img = $("<img>") 
+                img.attr("src","../fff/0"+i+".png")
+                img.attr("id","asdf")
+                img.attr("class","qqq")
+                img.attr("class","qqq")
+
+                box.append(img)
+
+                $("#wrapper").append(box)
+                
+            }
+
+           
+            //on
+            $("#wrapper > div").eq(0).on("click", function(){
+                    
+                    $("#wrapper > div").eq( 4 ).css({background:"#fa0"} )
+            })  
+            
+            //마우스이벤트함수 직접
+            $("#wrapper > div").eq(1).mouseover( function(){
+                    
+                    $("#wrapper > div").eq( 5 ).css({boxShadow:"10px 10px 20px #000"} )
+            })
+            
+
+            // 이벤트를 키배열로
+            $("#wrapper > div").eq(2).on(
+                {
+                    mouseout : function(){ $("#wrapper > div").eq( 6 ).css({opacity: 0.5} ) }  , 
+                    mouseup : function(){ $("#wrapper > div").eq( 7 ).css({transform:"rotate(90deg)"} )  }
+                }
+            ) 
+         
+        })
+
+    </script>
+</head>
+<body>
+    <h1>event</h1>
+    <div id="wrapper"></div>
+</body>
+</html>

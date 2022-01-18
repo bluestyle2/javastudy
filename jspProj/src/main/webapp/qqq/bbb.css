@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+header{
+    height: 100px;
+    font-size: 3rem;
+    padding:30px;
+    line-height: 100px;
+    background: #ff0;
+}
+
+section{
+    padding:70px;
+    background-color: #09f;
+}
+
+section > #box{
+    font-size: 40px;
+    font-style: italic;
+    
+}
+
+footer{
+    padding:30px;
+    font-size: 20px;
+    background-color: gray;
+    color: white;
+}

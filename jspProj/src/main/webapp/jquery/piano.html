@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piano</title>
+    <style>
+        #wrapper > div {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            var arr = ["red","orange", "yellow","green","blue","navy","purple" ]
+
+            $.each(arr, function(i, e){
+                //console.log(i)
+                //console.log(e)
+                var dd = $("<div>")
+                dd.css({backgroundColor:e})
+                $("#wrapper").append(dd)
+            })
+
+            $("#wrapper > div").hover(
+                function(){
+                    //console.log("마우스 올렸다")
+                    $(this).stop().animate({width:500}, 500)
+                },
+                function(){
+                    //console.log("마우스 나갔다")
+                    $(this).stop().animate({width:100}, 500)
+                }
+            )
+
+        })
+    </script>
+</head>
+<body>
+    <h1>piano</h1>
+    <div id="wrapper"></div>
+</body>
+</html>

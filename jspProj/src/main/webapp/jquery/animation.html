@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .box{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background:#ff0;
+            top:0px;
+            left:0px;
+        }
+
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $(".start").on("click",function(){
+
+                //console.log( $(this).index() )   전체 객체에서 몇 번째
+                console.log( $(".start").index($(this)) ) //$(".start") 객체 배열에서 $(this) 가 몇번째
+
+                let no = $(".start").index($(this))
+
+                $(".box").eq( no ).animate(
+                    {
+                        left:"400px"
+                        //,top:"400px"
+                    },
+                    1500,                //1초
+                    function(){          //애니메이션 완료 후 작업
+                       // alert("이동 완료")
+                    }
+                ).animate({top:"400px"}, 500)
+                .animate({width:"200px"}, 500)
+                .animate({height:"50px"}, 500)
+                .animate({  height:"100px",
+                            width:"100px",
+                            left:"0px",
+                            top:"0px"
+                }, 500)
+
+            })
+
+            $(".stop").on("click",function(){
+
+                var ar1 = eval($(this).attr("ar1"))
+                var ar2 = eval($(this).attr("ar2"))
+
+                //console.log(ar1, ar2)
+                //ar1  :   멈춰? 시작해?
+                //ar2  :   다음 애니메이트로 점프 해? 하지마?
+                $(".box").eq(   $(".stop").index($(this))    ).stop(ar1, ar2)
+
+            })
+            
+
+            
+        })
+    </script>
+</head>
+<body>
+<h1>animation</h1>
+<button class="start">시작</button>
+<button class="stop" ar1="true" ar2="true">정지(true, true)</button>
+<div class="box"></div>
+<button class="start">시작</button>
+<button class="stop"  ar1="true" ar2="false">정지(true, false)</button>
+<div class="box"></div>
+<button class="start">시작</button>
+<button class="stop"  ar1="false" ar2="true">정지(false, true)</button>
+<div class="box"></div>
+<button class="start">시작</button>
+<button class="stop"  ar1="false" ar2="false">정지(false, false)</button>
+<div class="box"></div>
+</body>
+</html>

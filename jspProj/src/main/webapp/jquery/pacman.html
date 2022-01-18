@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pacman</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #me{
+            width:100px;
+            height: 100px;
+            background: #ff0;
+            position: absolute;
+        }
+        #you{
+            width:50px;
+            height: 50px;
+            background: #f00;
+            position: absolute;
+        }
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script> 
+    <script>
+        $(function(){
+            var x = 500, y = 400
+            var x2 = 100, y2 = 100
+
+            $("#me").css({left:x+"px",  top:y+"px"})
+            $("#you").css({left:x2+"px",  top:y2+"px"})
+
+            function youMove(){
+                x2+=5
+                y2+=5
+                $("#you").css({left:x2+"px",  top:y2+"px"})
+            }
+
+            var timer = setInterval(youMove, 50)
+
+
+            /*
+            37	←	방향키
+            38	↑	방향키
+            39	→	방향키
+            40	↓	방향키
+            
+            */
+            $(window).keydown(function(e){
+                console.log("keydown : ", e.keyCode)
+                switch(e.keyCode){
+                    case 37:
+                        x-=10
+                        break
+                    case 39:
+                        x+=10
+                        break
+                    case 38:
+                        y-=10
+                        break
+                    case 40:
+                        y+=10
+                        break
+                }
+                $("#me").css({left:x+"px",  top:y+"px"})
+
+            })
+            
+        })
+    </script>
+</head>
+<body>
+    <h1>pacman</h1>
+    <div id = "me"></div>
+    <div id = "you"></div>
+</body>
+</html>

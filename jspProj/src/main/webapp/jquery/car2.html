@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car</title>
+    <style>
+        #wrapper{
+            width:900px;
+            height: 600px;
+            background-image: url(../fff/car.jpg);
+            position: absolute;
+            left: 100px;
+            top:200px;
+            z-index: 0;
+            opacity: 0.5;
+        } 
+        #big{
+            width:100px;
+            height: 100px;
+            background-image: url(../fff/car.jpg);
+            background-size: 1000px 700px;
+            /* background-position: -400px -350px; */
+           border-radius: 50px;
+           border:1px solid #0f0;
+            position: absolute;
+            /* left: 500px;
+            top:500px; */
+            z-index: 1;
+            opacity: 1;
+        } 
+       
+
+    </style>
+    <script src="../qqq/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            
+            $("#wrapper").on("mouseover",function(e){
+            //    console.log(e.pageX+","+e.pageY)
+                $("#big").css({
+                    left: e.pageX-50+"px",
+                    top: e.pageY-50+"px",
+                    backgroundPosition: -(e.pageX-50-100+50)+"px  " + -(e.pageY-50-200+50) + "px"
+                })
+               // $(this).css({opacity:0})
+            })
+          
+
+        })
+
+    </script>
+</head>
+<body>
+    <h1>car</h1>
+    <div id="wrapper"></div>
+    <div id="big"></div>
+</body>
+</html>
