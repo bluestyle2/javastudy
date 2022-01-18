@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+<mapper namespace="aaa.model.BoardMapper">
+
+	<select id="maxId" resultType="java.lang.Integer">
+		select max(id)+1 from board
+	</select>
+	
+	<sql id="maxSql">
+		(select max(id)+1 from board t1)
+	</sql>
+
+	<sql id="schSql">
+		${kind} like concat('%' , #{sch} , '%')
+	</sql>
+		
+
+	<select id="bblist" resultType="BoardDTO" parameterType="BoardDTO">
+		select * from board
+		 
+		<if test="sch != null ">
+			<where>
+			
+				<choose>
+					<when test="kind == 'cnt' ">
+						
+						
+						<!--<![CDATA[ cnt < #{sch} ]]> --> 
+						<!-- cnt &lt; #{sch}-->
+						
+						<!--<![CDATA[ ]]> 대신 < 나 > 을 &lt; &gt; 으로 대체하여 사용 가능 -->
+						cnt &gt; #{sch}
+						
+					</when>
+					<otherwise>
+							<include refid="schSql" />
+					</otherwise>
+				</choose>
+			
+		
+				<!-- schSql을 불러다 쓰겠다 -->
+				<!-- pname like '%' ㄷㄹㄷㄹ '%' -->
+			</where>
+		</if>
+		
+		order by gid desc, seq 
+	</select>
+	
+	<select id="detail" resultType="BoardDTO" parameterType="BoardDTO">
+		select * from board where id = ${id}
+	</select>
+	
+	<insert id="inserttt" parameterType="BoardDTO">
+		insert into board (title, pname, pw, content, upfile, reg_date, lev, seq, cnt) values
+		( #{title} , #{pname}, #{pw}, #{content}, #{upfile}, sysdate(), 0, 0, 0 )
+	</insert>
+	
+	<insert id="insertGid" parameterType="BoardDTO">
+		insert into board (id, gid, title, pname, pw, content, upfile, reg_date, lev, seq, cnt) values
+		(#{id}, #{gid}, #{title}, #{pname}, #{pw}, #{content}, #{upfile}, sysdate(), 0, 0, 0 )
+	</insert>
+	
+	<insert id="insertGid2" parameterType="BoardDTO">
+		insert into board (id, gid, title, pname, pw, content, upfile, reg_date, lev, seq, cnt) values
+		(<include refid="maxSql" />, <include refid="maxSql" />, #{title} , #{pname}, #{pw}, #{content}, #{upfile}, sysdate(), 0, 0, 0 )
+	</insert>
+	
+	<insert id="insertGid3" parameterType="BoardDTO">
+	
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE">		
+			select max(id)+1 from board
+		</selectKey >					
+				
+		insert into board (id, gid, title, pname, pw, content, upfile, reg_date, lev, seq, cnt) values
+		(#{id}, #{gid}, #{title}, #{pname}, #{pw}, #{content}, #{upfile}, sysdate(), 0, 0, 0 )
+	</insert>
+	
+	<insert id="insertGid4" parameterType="BoardDTO">
+	
+		<selectKey keyProperty="ooId,ooGid" keyColumn="mm1,mm2" resultType="java.util.Map" order="BEFORE">		
+			select max(id)+1 as mm1, max(id)+1 as mm2 from board
+		</selectKey >	
+								
+		insert into board (id, gid, title, pname, pw, content, upfile, reg_date, lev, seq, cnt) values
+		(#{id}, #{gid}, #{title}, #{pname}, #{pw}, #{content}, #{upfile}, sysdate(), 0, 0, 0 )
+	</insert>
+	
+	<insert id="insertList" parameterType="java.util.List" >
+		insert into board (title, pname, pw, content, reg_date, lev, seq, cnt) values		
+		<foreach collection="list" item="dto"  separator=" , ">		
+		( #{dto.title} , #{dto.pname}, #{dto.pw}, #{dto.content}, sysdate(), 0, 0, 0 )
+		</foreach>
+	</insert>
+	
+	<insert id="insertList2" parameterType="ArrDTO" >
+		insert into board (title, pname, pw, content, reg_date, lev, seq, cnt) values		
+		<foreach collection="arr" item="dto"  separator=" , ">		
+		( #{dto.title} , #{dto.pname}, #{dto.pw}, #{dto.content}, sysdate(), 0, 0, 0 )
+		</foreach>
+	</insert>
+	
+	<delete id="ddelete" parameterType="BoardDTO">
+		delete from board where id = #{id}
+	</delete>
+	
+	<update id="modify" parameterType="BoardDTO">
+		update board set title = #{title}, pname = #{pname}, content = #{content} where id = #{id}
+	</update>
+	
+</mapper>

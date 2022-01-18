@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+<mapper namespace="aaa.model.GenMapper">
+
+	<select id="bblist" resultType="BoardDTO">
+		select * from board order by gid desc, seq
+	</select>
+	
+	<insert id="genInsert" parameterType="ArrDTO" >
+		insert into board (id, gid, title, pname, pw, content, reg_date, lev, seq, cnt) values		
+		
+		<foreach collection="arr" item="dto"  separator=" , ">		
+		
+		( #{dto.id}, #{dto.gid}, #{dto.title} , #{dto.pname}, #{dto.pw}, #{dto.content}, sysdate(), 0, 0, 0 )
+		</foreach>
+	</insert>
+	
+	<insert id="genInsert2" parameterType="ArrDTO" >
+		
+		<foreach collection="arr" item="dto" separator=" ; ">		
+			insert into board (id, gid, title, pname, pw, content, reg_date, lev, seq, cnt) values		
+			( #{dto.id}, #{dto.gid}, #{dto.title} , #{dto.pname}, #{dto.pw}, #{dto.content}, sysdate(), 0, 0, 0 )
+		</foreach>
+	</insert>
+</mapper>
